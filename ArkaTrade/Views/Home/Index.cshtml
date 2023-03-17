@@ -1,0 +1,121 @@
+﻿@model ArkaTrade.viewmodels.viewlists;
+
+
+<head>
+    <!-- Template Main CSS File -->
+    <link href="~/css/stylehome.css" rel="stylesheet">
+</head>
+<body>
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <video autoplay loop muted playsinline id="myVideo">
+            <source src="~/videos/starw2.mp4" type="video/mp4">
+        </video>
+        <div class="container" data-aos="zoom-out" data-aos-delay="100">
+            <h1>Welcome to <span>ArkaTrade</span></h1>
+            <h2>International quality, Local taste . </h2>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+        <!-- ======= About Us Section ======= -->
+        <section id="about" class="about">
+
+            <div class="container" data-aos="fade-up">
+                <div class="row gx-0">
+
+                    <div class="col-lg-6 d-flex flex-column justify-content-center" data-aos="fade-up" data-aos-delay="200">
+                        <div class="content">
+                            <h2>About Us</h2>
+                            <p>
+                                <strong>From the land of goodness to the world</strong>...... Arkatrade is a holding company that specializes in the manufacturing and freezing of fruits and other food products. The company has a strong focus on preserving the natural goodness and flavor of its products while ensuring that they are safe for consumption.
+                                Arkatrade uses modern technology and techniques to process and package its food products, and it maintains a high level of quality control to ensure that its products meet or exceed industry standards. The company's portfolio includes a wide range of fruits and other food products that are popular with consumers around the world.
+                                In addition to its manufacturing and freezing operations, Arkatrade also has a strong commitment to sustainability and environmental stewardship. The company works closely with local communities and farmers to source its raw materials and implements eco-friendly practices throughout its operations.
+                                Overall, Arkatrade is a leading player in the food manufacturing and preservation industry, known for its commitment to quality, sustainability, and innovation ...... <strong>We are looking forward to serve you !</strong>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 d-flex align-items-center" data-aos="zoom-out" data-aos-delay="200">
+                        <img src="~/img/about.png" class="img-fluid" alt="">
+                    </div>
+                </div>
+            </div>
+
+        </section><!-- End About Section -->
+  
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2><strong>Services</strong></h2>
+                </div>
+                <div class="row">
+
+                    <div class="col-lg-6 col-md-6">
+                        <div class="icon-box" data-aos="fade-up">
+                            <div class="icon"><img src="~/img/barakat.png"></div>
+                            <h4 class="title">@Html.ActionLink("ELBARAKAT", "Index", "barakat")</h4>
+                            <p class="description">Food Preserving Facility</p>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <div class="icon"><img src="~/img/broj.png"></div>
+                            <h4 class="title">@Html.ActionLink("BROUJ", "Index", "brouj")</h4>
+                            <p class="description">Fruits Processing Factory</p>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2><strong>Gallery</strong></h2>
+                </div>
+                <div class="row" data-aos="fade-up">
+                    <div class="col-lg-12 d-flex justify-content-center">
+                        <ul id="portfolio-flters">
+                            <li data-filter="*" class="filter-active">All</li>
+                            <li data-filter=".filter-ArkaTrade">ArkaTrade</li>
+                            <li data-filter=".filter-Brouj">Brouj</li>
+                            <li data-filter=".filter-ElBarakat">ElBarakat</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row portfolio-container" data-aos="fade-up">
+                    @foreach (var item in Model.Values)
+                {
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-@item.dept">
+                            <img src="data:@item.ContentType;base64,@(Convert.ToBase64String(@item.Data))" class="img-fluid">
+                        </div>             
+                }
+                </div>
+            </div>
+        </section><!-- End Portfolio Section -->
+        <!-- ======= Our Clients Section ======= -->
+        <section id="clients" class="clients">
+            <div class="container">
+                <div class="section-title" data-aos="fade-up">
+                    <h2><strong>We Operate Globaly</strong></h2>
+                </div>
+                <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
+                    @foreach(var item in Model.countries)
+                    {
+                        <div class="col-lg-3 col-md-4 col-xs-6">
+                            <div class="client-logo">
+                                @{
+                                    var flag = @item.code + ".png";
+                                }
+                                <img src="~/img/flags/@flag" class="img-fluid" alt="" >
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </section><!-- End Our Clients Section -->
+    </main><!-- End #main -->
+</body>

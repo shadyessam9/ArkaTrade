@@ -1,0 +1,328 @@
+﻿@model ArkaTrade.viewmodels.viewlists;
+@{
+    Layout = "";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>ArkaTrade-admin</title>
+
+    <!-- Favicons -->
+    <link href="~/img/favicon.png" rel="icon">
+    <link href="~/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="~/css/stylehome.css" rel="stylesheet">
+    <link href="~/css/headerfooter.css" rel="stylesheet">
+
+
+
+
+
+
+</head>
+
+<body>
+
+    <main id="main">
+   
+ 
+        
+
+        <section id="blog" style="overflow: auto;" class="blog">
+            <div class="container"  data-aos="fade-up">
+
+                <div class="section-title" data-aos="fade-up">
+                    <h2><strong>AdminPanel</strong></h2>
+                </div>
+
+
+
+
+                <!--Add Countries-->
+                <article class="entry">
+
+
+                    <h2 class="entry-title">
+                        Home-Countries
+                    </h2>
+
+                    <form action="/adminpanel/Updatecountries" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label>Choose Countries:</label>
+                            @foreach (var item in Model.countries)
+                            {
+                                <label class="checkbox-inline">
+                                    <input type="checkbox" name="SelectedCountries" value="@item.countryname" @(item.show == 1 ? "checked" : "") />@item.countryname
+                                </label>
+                            }
+                        </div>
+                        <button type="submit" class="btn btn-primary" style="margin-top:2%">Update</button>
+                    </form>
+
+                </article><!-- End  entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+                <!--Add Images-->
+                <article class="entry">
+
+                    <h2 class="entry-title">
+                        Images
+                    </h2>
+
+                    <div class="entry-content">
+                        <form action="/adminpanel/Upload" method="post" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="department">Choose Department:</label>
+                                <select name="dept" id="dept">
+                                    <option value="ArkaTrade">ArkaTrade</option>
+                                    <option value="Brouj">Brouj</option>
+                                    <option value="ElBarakat">ElBarakat</option>
+                                </select>
+                                <label for="images">Choose images:</label>
+                                <input type="file" name="images" multiple class="form-control-file" id="images">
+                            </div>
+                            <button type="submit" class="btn btn-primary" style="margin-top:2%">Upload</button>
+                        </form>
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style=" vertical-align: middle; text-align: center;">Image</th>
+                                    <th scope="col" style=" vertical-align: middle; text-align: center;">Department</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.images)
+                                {
+                                    <form action="/adminpanel/deleteimage" method="post" enctype="multipart/form-data">
+                                    <tr>
+                                        <td style=" vertical-align: middle; text-align: center;"><img width="100" height="100" src="data:@item.ContentType;base64,@(Convert.ToBase64String(@item.Data))" class="img-fluid"></td>
+                                        <td style=" vertical-align: middle; text-align: center;">@item.dept</td>
+                                        <td style=" vertical-align: middle; text-align: center;"><button type="submit" name="id" value="@item.Id" class="btn btn-danger">delete</button></td>
+                                    </tr>
+                                    </form>
+                                }
+                            </tbody>
+                        </table>
+
+
+                    </div>
+
+                </article><!-- End entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+  
+                
+
+                <!--Add Blog Posts-->
+                <article class="entry">
+                    <h2 class="entry-title">
+                        Blog-Post
+                    </h2>
+
+                    <div class="entry-content">
+                         <form action="/adminpanel/Addpost" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                                <div class="col">
+                                    <div class="row" style="margin:2%">
+                                        <label>Title:</label>
+                                        <input type="text" name="title" /><br />
+                                    </div>
+                                    <div class="row" style="margin:2%">
+                                        <label for="image">Image:</label>
+                                        <input type="file" id="image" name="image" />
+                                    </div>
+                                    <div class="row" style="margin:2%">
+                                       <label>description:</label>
+                                       <textarea name="description" rows="4" cols="50"></textarea>
+                                    </div>
+                                    <div class="row" style="margin:2%">
+                                    <label>until:</label>
+                                    <input type="date" id="EndDate" name="until" /><br />
+                                    </div>
+                                    <button type="submit" class="btn btn-primary" style="margin:2%">Post</button>
+                                 </div>
+                        </div>
+                        </form>
+                    </div>
+                </article><!-- End  entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+                <!--Contact Phones-->
+                <article class="entry">
+                    <h2 class="entry-title">
+                        Contact-Us Phones
+                    </h2>
+                    <div class="entry-content">
+
+                        <form action="/adminpanel/addphone" method="post" enctype="multipart/form-data">
+                            <label for="phone">Add Phone:</label>
+                            <input type="text" id="phone" name="phone">
+                            <button type="submit" class="btn btn-primary" >Add</button>
+                        </form>
+                   
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">phone</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model.phones)
+                                {
+                                    <form action="/adminpanel/deletephone" method="post" enctype="multipart/form-data">
+                                    <tr>
+                                        <td>@item.phone1</td>
+                                        <td><button type="submit" name="id" value="@item.id" class="btn btn-danger">delete</button></td>
+                                    </tr>
+                                    </form>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </article><!-- End  entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+
+                <!--Contact Mails-->
+                <article class="entry">
+                    <h2 class="entry-title">
+                        Contact-Us mails
+                    </h2>
+                    <div class="entry-content">
+
+
+                        <form action="/adminpanel/addmail" method="post" enctype="multipart/form-data">
+                            <label for="mail">Add Mail:</label>
+                            <input type="text" id="mail" name="mail">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </form>
+                     
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">mail</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.mails)
+                                {
+                                    <form action="/adminpanel/deletemail" method="post" enctype="multipart/form-data">
+                                    <tr>
+                                        <td>@item.email</td>
+                                        <td><button type="submit" name="id" value="@item.id" class="btn btn-danger">delete</button></td>
+                                    </tr>
+                                    </form>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </article><!-- End  entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+                <!--Contact Locations-->
+                   <article class="entry">
+                    <h2 class="entry-title">
+                        Contact-Us locations
+                    </h2>
+                    <div class="entry-content">
+
+                        <form action="/adminpanel/addlocation" method="post" enctype="multipart/form-data">
+                            <label for="location">Add Location:</label>
+                            <input type="text" id="location" name="location">
+                            <button type="submit" class="btn btn-primary">Add</button>
+                        </form>
+
+
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">location</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(var item in Model.locations)
+                                {
+                                    <form action="/adminpanel/deletelocation" method="post" enctype="multipart/form-data">
+                                    <tr>
+                                        <td>@item.location1</td>
+                                        <td><button type="submit" name="id" value="@item.id" class="btn btn-danger">delete</button></td>
+                                    </tr>
+                                    </form>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </article><!-- End  entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+                <!--Customers Emails-->
+                <article class="entry">
+
+
+                    <h2 class="entry-title">
+                        <h2>Download Vistors Emails</h2>
+                    </h2>
+
+                    <div class="entry-content">
+                        <a href="@Url.Action("DownloadData", "adminpanel")">Download Data</a>
+                    </div>
+
+                </article><!-- End  entry -->
+                <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+
+
+
+
+
+               
+
+
+            </div>
+        </section><!-- End Blog Section -->
+
+    </main><!-- End #main -->
+  
+</body>
+
+</html>

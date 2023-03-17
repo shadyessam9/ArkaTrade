@@ -1,0 +1,170 @@
+﻿@model ArkaTrade.viewmodels.viewlists;
+
+<head>
+    <!-- Template Main CSS File -->
+    <link href="~/css/barakat.css" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- ======= Hero Section ======= -->
+    <section id="hero" class="d-flex align-items-center">
+        <video autoplay loop muted playsinline id="vid">
+            <source src="~/videos/freeze.mp4" type="video/mp4">
+        </video>
+        <div class="container" data-aos="zoom-out" data-aos-delay="100">
+            <div class="row">
+                <img src="~/img/barakat.png" style="width:35%; height:auto;" class="img-fluid">
+                <h1><span> El Barakat Refregirators </span></h1>
+                <strong>
+                    El Barakat Food Freezing Facility is a company that specializes in freezing food products to extend their shelf life. We uses various techniques such as blast freezing, plate freezing, or tunnel freezing to rapidly lower the temperature of the food products and preserve their quality and freshness. By freezing food products during times of abundance, El Barakat Food Freezing Facility can help with prevent food waste and ensure a steady supply of food for consumers. The facility plays a vital role in the food supply chain, ensuring that fresh food products are available year-round, regardless of seasonal variations in availability. 
+                    With its commitment to quality and food safety, El Barakat Food Freezing Facility has established a reputation as a reliable and trusted partner in the food industry.
+                </strong>
+            </div>
+        </div>
+    </section><!-- End Hero -->
+
+    <main id="main">
+
+        <!-- ======= Featured Services Section ======= -->
+        <section id="featured-services" class="featured-services">
+            <div class="container" data-aos="fade-up">
+
+                <div class="row">
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="100">
+                            <div class="icon"><i class="bi bi-building-fill-gear"></i></div>
+                            <h4 class="title"><a>Storage space 4500 tons</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="200">
+                            <div class="icon"><i class="bi bi-fan"></i></div>
+                            <h4 class="title"><a>Freezing rooms, modern wards and advanced equipment</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="300">
+                            <div class="icon"><i class="bi bi-snow2"></i></div>
+                            <h4 class="title"><a href="">Stable freezing temp -18°C</a></h4>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 col-lg-3 d-flex align-items-stretch mb-5 mb-lg-0">
+                        <div class="icon-box" data-aos="fade-up" data-aos-delay="400">
+                            <div class="icon"><i class="bi bi-patch-check"></i></div>
+                            <h4 class="title"><a >25 years experience</a></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section><!-- End Featured Services Section -->
+
+
+
+        <!-- ======= Portfolio Section ======= -->
+        <section id="portfolio" class="portfolio">
+            <div class="container">
+
+                <div class="section-title" data-aos="fade-up">
+                    <h2><strong>Gallery</strong></h2>
+                </div>
+
+                <div class="row portfolio-container" data-aos="fade-up">
+
+                    @foreach (var item in Model.images)
+                    {
+                        <div class="col-lg-4 col-md-6 portfolio-item">
+                            <img src="data:@item.ContentType;base64,@(Convert.ToBase64String(@item.Data))" class="img-fluid">
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </section><!-- End Portfolio Section -->
+        <!-- ======= Frequently Asked Questions Section ======= -->
+        <section id="faq" class="faq section-bg">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>F.A.Q</h2>
+                    <h3>Frequently Asked <span>Questions</span></h3>
+                </div>
+
+                <div class="row justify-content-center">
+                    <div class="col-xl-10">
+                        <ul class="faq-list">
+
+                            <li>
+                                <div data-bs-toggle="collapse" class="collapsed question" href="#faq1">What is Elbrakat Frozen Food Facility? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                                <div id="faq1" class="collapse" data-bs-parent=".faq-list">
+                                  <p>
+                                        <a>
+                                            Elbrakat Frozen Food Facility is a frozen food processing and manufacturing company. It produces and sells a variety of frozen food products such as vegetables, fruits, meat, poultry, and seafood.
+                                        </a>
+                                  </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div data-bs-toggle="collapse" href="#faq2" class="collapsed question">Where is Elbrakat Frozen Food Facility located? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                                <div id="faq2" class="collapse" data-bs-parent=".faq-list">
+                                    <div class="map-section">
+                                        <iframe id="gmap_canvas" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3425.749501001568!2d30.67434201546422!3d30.837684487617217!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x14f6391d1a9a7319%3A0x5e4fdfc301184ec4!2z2LTYsdmD2Kkg2KfZhNiu2YrYsdin2Kog2YTZhNiq2K7YstmK2YYg2YjYp9mE2KrYqNix2YrYryDZiNin2YTYqtis2YXZitiv!5e0!3m2!1sen!2seg!4v1678885370897!5m2!1sen!2seg" frameborder="0" scrolling="no" style="margin-right:5%;margin-bottom:5%;margin-top:5%; height:auto; width:100%; direction:ltr !important;"></iframe>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div data-bs-toggle="collapse" href="#faq3" class="collapsed question">What types of frozen food products does Elbrakat Frozen Food Facility produce? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                                <div id="faq3" class="collapse" data-bs-parent=".faq-list">
+                                  <p>
+                                        <a>
+                                            Elbrakat Frozen Food Facility produces a wide range of frozen food products such as frozen vegetables, fruits, meat, poultry, and seafood. Some of their products include frozen vegetables like peas, carrots, corn, and beans, frozen fruits like strawberries, and raspberries, and frozen meat products like chicken and beef
+                                        </a>
+                                  </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div data-bs-toggle="collapse" href="#faq4" class="collapsed question">Is Elbrakat Frozen Food Facility's food products safe for consumption? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                                <div id="faq4" class="collapse" data-bs-parent=".faq-list">
+                                    <p>
+                                        <a>
+                                            Elbrakat Frozen Food Facility  complies with strict food safety regulations to ensure that their products are safe for consumption. They follow strict food safety protocols during their manufacturing processes to minimize the risk of contamination and ensure that their products meet food safety standards.
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div data-bs-toggle="collapse" href="#faq5" class="collapsed question">Can i  rent refrigerators at ElBrakat Facility? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                                <div id="faq5" class="collapse" data-bs-parent=".faq-list">
+                                    <p>
+                                        <a>
+                                            Yes, we offer renting refrigerators for other companies
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+
+                            <li>
+                                <div data-bs-toggle="collapse" class="collapsed question" href="#faq6">How can I contact ElBarakat Facility? <i class="bi bi-chevron-down icon-show"></i><i class="bi bi-chevron-up icon-close"></i></div>
+                                <div id="faq6" class="collapse" data-bs-parent=".faq-list">
+                                    <p>
+                                        <a>
+                                            We will be more than happy to serve you , For Contact and Purchases please Refrer to our @Html.ActionLink("Contact Us", "Index", "contact")
+                                        </a>
+                                    </p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Frequently Asked Questions Section -->
+    </main><!-- End #main -->
+</body>

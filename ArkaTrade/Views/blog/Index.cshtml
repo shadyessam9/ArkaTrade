@@ -1,0 +1,50 @@
+﻿@model ArkaTrade.viewmodels.viewlists;
+
+<head>
+    <!-- Template Main CSS File -->
+    <link href="~/css/stylehome.css" rel="stylesheet">
+</head>
+
+<body>
+    <main id="main">
+        <!-- ======= Blog Section ======= -->
+        <section id="blog"  class="blog">
+            <div class="container" style="min-height:1000px" data-aos="fade-up">
+
+                <div class="section-title" data-aos="fade-up">
+                    <h2><strong>advertisements</strong></h2>
+                </div>
+
+                @foreach (var item in Model.blogs)
+                {
+                    <article class="entry">
+
+                        <div class="entry-img">
+                            <img src="data:@item.ContentType;base64,@(Convert.ToBase64String(@item.img))" class="img-fluid">
+                        </div>
+
+                        <h2 class="entry-title">
+                            @item.title
+                        </h2>
+
+                        <div class="entry-meta">
+                            @{
+                                var date = @item.until?.ToString("dd/MM/yyyy");
+                            }
+                            <p><i class="bi bi-clock"></i> UNTIL :  @date</p>
+                        </div>
+
+                        <div class="entry-content" style="word-wrap: break-word">
+                            <p>
+                                @item.description
+                            </p>
+                        </div>
+
+                    </article>
+
+                }
+
+            </div>
+        </section><!-- End Blog Section -->
+    </main><!-- End #main -->
+</body>

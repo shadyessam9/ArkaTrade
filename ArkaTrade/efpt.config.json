@@ -1,0 +1,64 @@
+﻿{
+   "CodeGenerationMode": 2,
+   "ContextClassName": "arkatradeContext",
+   "ContextNamespace": null,
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": null,
+   "OutputContextPath": "Data",
+   "OutputPath": "Models",
+   "PreserveCasingWithRegex": true,
+   "ProjectRootNamespace": "ArkaTrade",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 0,
+   "Tables": [
+      {
+         "Name": "[dbo].[blog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[country]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[emails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[Images]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[locations]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[mails]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[dbo].[phones]",
+         "ObjectType": 0
+      }
+   ],
+   "UiHint": "DESKTOP-457SRHR.arkatrade",
+   "UncountableWords": null,
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseHierarchyId": false,
+   "UseInflector": true,
+   "UseLegacyPluralizer": false,
+   "UseManyToManyEntity": false,
+   "UseNoDefaultConstructor": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSchemaFolders": false,
+   "UseSpatial": false,
+   "UseT4": false
+}

@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+   <title>ArkaTrade</title>
+   <meta content="" name="description">
+   <meta content="" name="keywords">
+    <!-- Favicons -->
+    <link href="~/img/arka.png" rel="icon">
+    <link href="~/img/arka.png" rel="apple-touch-icon">
+    <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Muli:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+
+         <!-- Vendor CSS Files -->
+        <link href="~/vendor/animate.css/animate.min.css" rel="stylesheet">
+        <link href="~/vendor/aos/aos.css" rel="stylesheet">
+        <link href="~/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        <link href="~/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+        <link href="~/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+        <link href="~/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+        <link href="~/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+        <!-- Template Main CSS File -->
+       <link href="~/css/headerfooter.css" rel="stylesheet">
+
+    <script src='~/vendor/jquery/jquery.min.js'></script>
+    <script>
+        $(document).ready(function () {
+            $.ajax({
+                type: 'POST',
+                url: '/Home/meta',
+                data: {},
+                success: function (data) {
+
+                     $.each(data.phones, function(index, item) {
+                        var element = $('<li>').html(item.phone1);
+                      $("#phones").append(element);
+                        });
+
+
+                      $.each(data.mails, function(index, item) {
+                        var element = $('<li>').html(item.email);
+                      $("#mails").append(element);
+                       });
+
+
+                    $.each(data.locations, function (index, item) {
+                        var element = $('<li>').html(item.location1);
+                        $("#locations").append(element);
+                    });
+
+                }
+            })
+        });
+    </script>
+    
+</head>
+
+
+<body>
+    <!-- ======= Header ======= -->
+    <header id="header" class="d-flex align-items-center">
+        <div class="container d-flex justify-content-between">
+            <div class="logo">
+                <a href="@Url.Action("Index", "Home")"><img style="margin-bottom:1%" src="~/img/arka.png" alt="" class="img-fluid"></a>
+            </div>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li>@Html.ActionLink("HOMEPAGE", "Index", "Home")</li>
+                    <li class="dropdown">
+                        <a><span>Sections</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li>@Html.ActionLink("BROUJ", "Index", "brouj")</li>
+                            <li>@Html.ActionLink("ELBARAKAT", "Index", "barakat")</li>
+                        </ul>
+                    </li>
+                    <li>@Html.ActionLink("Gallery", "Index", "gallery")</li>
+                    <li>@Html.ActionLink("Blog", "Index", "blog")</li>
+                    <li>@Html.ActionLink("Contact Us", "Index", "contact")</li>
+                    <li>
+                        <div id="google_translate_element"></div>
+                    </li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
+    </header><!-- End Header -->
+
+
+
+    <main id="main" class="pb-3">
+        @RenderBody()
+    </main>
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer">
+
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+
+                    <div class="col-lg-2 col-md-4 footer-contact">
+                        <div class="logo">
+                            <img src="~/img/arka.png" alt="" class="img-fluid">
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 footer-links">
+                        <h4><i class="bi bi-geo-alt"></i>Location</h4>
+                        <ul id="locations">
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-2 col-md-4 footer-links">
+                        <h4><i class="bi bi-envelope"></i>mails</h4>
+                        <ul id="mails">
+
+                        </ul>
+                    </div>
+
+
+                    <div class="col-lg-2 col-md-4 footer-links">
+                        <h4><i class="bi bi-phone"></i>Phones</h4>
+                        <ul id="phones">
+
+                        </ul>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 footer-newsletter">
+                        <h4>Join Our Newsletter</h4>
+                        <form id="email" action="/Home/addemail" method="post">
+                            <input type="email" name="email">
+                            <input type="submit" value="Subscribe">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-md-flex py-4">
+            <div class="me-md-auto text-center text-md-start">
+                <div class="copyright">
+                    &copy; Copyright <strong><span>ArkaTrade</span></strong>. All Rights Reserved
+                </div>
+            </div>
+            <div class="social-links text-center text-md-right pt-3 pt-md-0">
+                <a href="https://www.facebook.com/Brouj.station/?ref=pages_you_manage" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://wa.me/201006724853" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            </div>
+        </div>
+    </footer><!-- End Footer -->
+
+
+    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+
+
+  <!-- Vendor JS Files -->
+  <script src="~/vendor/aos/aos.js"></script>
+  <script src="~/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="~/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="~/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="~/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="~/vendor/waypoints/noframework.waypoints.js"></script>
+  <!-- Template Main JS File -->
+    <script src="~/js/main.js"></script>
+    <script src='~/vendor/jquery/jquery.min.js'></script>  
+    <script src='~/js/scrollreveal.js'></script>
+    <script src="~/js/broj.js"></script>
+    <!-- Translation Script -->
+  
+    <script>
+        function googleTranslateElementInit() {
+            new google.translate.TranslateElement({ pageLanguage: 'en', includedLanguages: 'en,de,it,ar,ru,fr', layout: google.translate.TranslateElement.InlineLayout.SIMPLE }, 'google_translate_element');
+            $('.goog-te-gadget-simple').on('DOMSubtreeModified', 'span', function () {
+                language = $(".VIpgJd-ZVi9od-xl07Ob-lTBxed span").html();
+                if (language == "Arabic" || language == "العربية") {
+                    $('#hero').css('direction', 'rtl');
+                    $('#main').css('direction', 'rtl');
+                }
+                else {
+                    $('#hero').css('direction', 'ltr');
+                    $('#main').css('direction', 'ltr');
+
+                };
+            });
+        };
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
